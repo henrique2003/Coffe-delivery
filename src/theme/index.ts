@@ -18,7 +18,7 @@ export default {
     WHITE: '#FFFFFF'
   },
   FONTS_FAMILY: {
-    BALLO: `'Baloo 2', cursive`,
-    ROBOTO: `'Roboto', sans-serif`
+    BALLO: '\'Baloo 2\', cursive',
+    ROBOTO: '\'Roboto\', sans-serif'
   }
 }

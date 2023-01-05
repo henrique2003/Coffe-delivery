@@ -1,14 +1,16 @@
 
+import { ThemeProvider } from "styled-components"
+
 import Router from "./Router"
-import themes from "./themes"
-import GlobalStyle from "./themes/GlobalStyle"
+import theme from "./theme"
+import GlobalStyle from "./theme/GlobalStyle"
 
 function App(): JSX.Element {
   return (
-    <>
-      <GlobalStyle theme={themes} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Router />
-    </>
+    </ThemeProvider>
   )
 }
 
