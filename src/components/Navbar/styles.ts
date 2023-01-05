@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.nav`
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100px;
-
-  @media(max-width: 1250px) {
-    margin: 0 30px;
-  }
 `
 
 export const Logo = styled.img`
