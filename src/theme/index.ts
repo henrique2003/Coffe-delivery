@@ -6,7 +6,7 @@ export default {
     PURPLE_DARK: '#4B2995',
     PURPLE: '#8047F8',
     PURPLE_LIGHT: '#EBE5F9',
-    BASE_LIGHT: '#272221',
+    BASE_TITLE: '#272221',
     BASE_SUBTITLE: '#403937',
     BASE_TEXT: '#574F4D',
     BASE_LABEL: '#8D8686',
