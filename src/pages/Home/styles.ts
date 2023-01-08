@@ -106,6 +106,31 @@ export const CoffeList = styled.div`
       margin-top: 10px;
     }
   }
+
+  @media(max-width: 800px) {
+    header {
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 35px;
+
+      h3 {
+        margin-bottom: 15px;
+      }
+
+      section {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @media(max-width: 600px) {
+    header {
+      section {
+        overflow-x: scroll;
+        padding-bottom: 15px;
+      }
+    }
+  }
 `
 
 export const CoffesGrid = styled.div`

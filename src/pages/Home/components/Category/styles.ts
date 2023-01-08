@@ -19,6 +19,7 @@ export const Container = styled.button<IContainer>`
   background: transparent;
   height: 30px;
   transition: all .2s ease;
+  white-space: nowrap;
 
   ${({ active }) => active && css`
     transition: all .2s ease;
