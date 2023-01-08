@@ -20,7 +20,6 @@ export const BackgroundGradient = styled.div`
 export const Flex = styled.div`
   display: flex;
   height: 100%;
-  height: 500px;
 
   @media(max-width: 1200px) {
     flex-direction: column;
@@ -38,7 +37,6 @@ export const Content = styled.div`
 export const Title = styled.h1`
   width: 100%;
   line-height: 60px;
-  word-break: break-all;
   font-size: 48px;
   font-family: ${({ theme }) => theme.FONTS_FAMILY.BALLO};
   font-weight: bolder;
@@ -72,7 +70,7 @@ export const CoffeImage = styled.div`
     max-width: 800px;
 
     img {
-      max-height: 600px;
+      min-height: 600px;
     }
   }
 `
@@ -118,5 +116,17 @@ export const CoffesGrid = styled.div`
 
   h3 {
     text-align: center;
+  }
+
+  @media(max-width: 1250px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: 650px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `
