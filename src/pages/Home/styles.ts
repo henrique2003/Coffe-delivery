@@ -28,8 +28,6 @@ export const Flex = styled.div`
 `
 
 export const Content = styled.div`
-
-
   @media(max-width: 1200px) {
     order: 2;
     max-width: 800px;
@@ -71,7 +69,6 @@ export const CoffeImage = styled.div`
   @media(max-width: 1200px) {
     order: 1;
     margin: 0 auto;
-    margin-bottom: 40px;
     max-width: 800px;
 
     img {
@@ -87,5 +84,39 @@ export const Grid = styled.div`
 
   @media(max-width: 700px) {
     grid-template-columns: repeat(1, 1fr);
+  }
+`
+
+export const CoffeList = styled.div`
+  margin-top: 50px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    
+    h3 {
+      font-size: 32px;
+      font-family: ${({ theme }) => theme.FONTS_FAMILY.BALLO};
+      color: ${({ theme }) => theme.COLORS.BASE_SUBTITLE};
+      font-weight: bolder;
+      margin-top: 0;
+    }
+
+    section {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  }
+`
+
+export const CoffesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 50px;
+
+  h3 {
+    text-align: center;
   }
 `

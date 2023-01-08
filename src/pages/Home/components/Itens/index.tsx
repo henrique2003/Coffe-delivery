@@ -8,10 +8,10 @@ interface IProps {
 
 const Itens: React.FC<IProps> = ({ bgColor, children, text }) => {
   return (
-    <S.Container>
-      <S.BoxIcon bgColor={bgColor}>
+    <S.Container bgColor={bgColor}>
+      <div>
         {children}
-      </S.BoxIcon>
+      </div>
       <p>{text}</p>
     </S.Container>
   )

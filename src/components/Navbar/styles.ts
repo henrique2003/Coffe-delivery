@@ -10,6 +10,13 @@ export const Container = styled.nav`
 export const Logo = styled.img`
   max-width: 100px;
   width: 100%;
+  transition: all .2s ease;
+  background: transparent !important;
+
+  &:hover {
+    transition: all .2s ease;
+    margin-top: -10px;
+  }
 `
 
 export const Actions = styled.div`
@@ -26,6 +33,12 @@ export const Location = styled.div`
   border-radius: 5px;
   margin-right: 15px;
   display: flex;
+  transition: all .2s ease;
+  
+  &:hover {
+    transition: all .2s ease;
+    background-color: ${({ theme }) => theme.COLORS.PURPLE_LIGHT_HOVER};
+  }
 
   p {
     font-size: 14px;
@@ -37,8 +50,9 @@ export const Location = styled.div`
     span {
       text-transform: uppercase;
     }
-  }
 
+  }
+  
   svg {
     font-size: 25px;
     color: ${({ theme }) => theme.COLORS.PURPLE};
@@ -46,12 +60,41 @@ export const Location = styled.div`
   }
 `
 
-export const Cart = styled.button`
+interface ICart {
+  num: number
+}
+
+export const Cart = styled.button<ICart>`
   padding: 6px 10px;
   background-color: ${({ theme }) => theme.COLORS.YELLOW_LIGHT};
   border-radius: 5px;
   outline: none;
   border: none;
+  transition: all .2s ease;
+  position: relative;
+
+  &::after {
+    display: ${({ num }) => num > 0 ? 'block' : 'none'};
+    content: '${({ num }) => num}';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: ${({ theme }) => theme.COLORS.YELLOW_DARK};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    font-family: ${({ theme }) => theme.FONTS_FAMILY.ROBOTO};
+    font-weight: bold;
+    text-align: center;
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  &:hover {
+    transition: all .2s ease;
+    background-color: ${({ theme }) => theme.COLORS.YELLOW_LIGHT_HOVER};
+  }
 
   svg {
     text-align: center;

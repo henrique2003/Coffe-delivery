@@ -9,13 +9,13 @@ const Navbar: React.FC = () => {
   return (
     <Wrapper>
       <S.Container>
-        <S.Logo src={logo} alt='copo de cafe roxo com um foguete branco dentro e do lado escrito coffe delivery' />
+        <S.Logo src={logo} alt='copo de café roxo com um foguete branco dentro e do lado escrito coffe delivery' />
         <S.Actions>
           <S.Location>
             <MdLocationOn />
             <p>Porto alegre, <span>rs</span></p>
           </S.Location>
-          <S.Cart>
+          <S.Cart num={0}>
             <IoCart />
           </S.Cart>
         </S.Actions>

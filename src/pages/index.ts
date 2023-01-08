@@ -1,7 +1,9 @@
-import Home from './Home/index'
-import Checkout from './Checkout/index'
+import Home from './Home'
+import Checkout from './Checkout'
+import Coffe from '../components/Cards/Coffe'
 
 export {
   Home,
-  Checkout
+  Checkout,
+  Coffe
 }
