@@ -49,31 +49,25 @@ const Home: React.FC = () => {
   }
 
   function filterCoffes(): ICoffe[] {
-    let allCoffes = [] as ICoffe[]
+    const filtredCoffes: ICoffe[] = []
 
-    // Lendo cada cafe
     coffes_data.map(coffe => {
       let countCategorys = 0
 
-      // Lendo cada categoria de cada cafe
-      coffe.categorys.map(coffeCategory => {
-        // Lendo cada categoria a ser procurada
-        currentCategory.map(category => {
-          if (coffeCategory === category) {
-            // Contando a quantidade de categorias do cafe
+      coffe.categorys.map(category => {
+        currentCategory.map(searchCategory => {
+          if (category === searchCategory) {
             countCategorys++
           }
         })
       })
 
       if (countCategorys === currentCategory.length) {
-        allCoffes.push(coffe)
+        filtredCoffes.push(coffe)
       }
     })
 
-    allCoffes = allCoffes.filter((item, index) => allCoffes.indexOf(item) === index)
-
-    return allCoffes
+    return filtredCoffes
   }
 
   const fitredCoffes = filterCoffes()
@@ -134,27 +128,34 @@ const Home: React.FC = () => {
               ))}
             </section>
           </header>
-          <S.CoffesGrid>
-            {currentCategory.length === 0
-              ? coffes_data.map((coffe, index) => (
-                <Coffe
-                  key={index}
-                  title={coffe.title}
-                  img={coffe.img}
-                  categorys={coffe.categorys}
-                  subtitle={coffe.description}
-                />
-              ))
-              : fitredCoffes.map((coffe, index) => (
-                <Coffe
-                  key={index}
-                  title={coffe.title}
-                  img={coffe.img}
-                  categorys={coffe.categorys}
-                  subtitle={coffe.description}
-                />
-              ))}
-          </S.CoffesGrid>
+          <S.CoffeListContent>
+            {currentCategory.length > 0 && fitredCoffes.length === 0 && (
+              <S.CoffeListMessage>
+                Nehum café encontrado com as cateogrias: {currentCategory.map(category => `"${category}" `)}
+              </S.CoffeListMessage>
+            )}
+            <S.CoffesGrid>
+              {currentCategory.length === 0
+                ? coffes_data.map((coffe, index) => (
+                  <Coffe
+                    key={index}
+                    title={coffe.title}
+                    img={coffe.img}
+                    categorys={coffe.categorys}
+                    subtitle={coffe.description}
+                  />
+                ))
+                : fitredCoffes.map((coffe, index) => (
+                  <Coffe
+                    key={index}
+                    title={coffe.title}
+                    img={coffe.img}
+                    categorys={coffe.categorys}
+                    subtitle={coffe.description}
+                  />
+                ))}
+            </S.CoffesGrid>
+          </S.CoffeListContent>
         </S.CoffeList>
       </Wrapper>
     </S.Container>

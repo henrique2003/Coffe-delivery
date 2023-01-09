@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.nav`
   display: flex;
@@ -64,12 +65,13 @@ interface ICart {
   num: number
 }
 
-export const Cart = styled.button<ICart>`
+export const Cart = styled(Link) <ICart>`
   padding: 6px 10px;
   background-color: ${({ theme }) => theme.COLORS.YELLOW_LIGHT};
   border-radius: 5px;
   outline: none;
   border: none;
+  text-decoration: none;
   transition: all .2s ease;
   position: relative;
 

@@ -133,6 +133,20 @@ export const CoffeList = styled.div`
   }
 `
 
+export const CoffeListContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const CoffeListMessage = styled.p`
+  text-align: center;
+  font-size: 20px;
+  font-family: ${({ theme }) => theme.FONTS_FAMILY.ROBOTO};
+  color: ${({ theme }) => theme.COLORS.BASE_LABEL};
+  margin: 200px 0;
+`
+
 export const CoffesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);

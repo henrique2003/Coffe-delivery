@@ -1,5 +1,7 @@
 import Wrapper from './Wrapper'
+import { Input } from './Input'
 
 export {
-  Wrapper
+  Wrapper,
+  Input
 }
