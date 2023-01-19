@@ -1,36 +1,65 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AiOutlineMinus } from 'react-icons/ai'
 import { FiPlus } from 'react-icons/fi'
 import { IoCart } from 'react-icons/io5'
 
+import { ICoffe } from '../../../context/cart/types'
 import * as S from './styles'
+import { CartContext } from '../../../context/cart/'
 
 interface IProps {
-  img: {
-    src: string
-    alt: string
-  }
-  title: string
-  subtitle: string
-  categorys: string[]
+  coffe: ICoffe
 }
 
-const Coffe: React.FC<IProps> = ({
-  img,
-  title,
-  subtitle,
-  categorys
-}) => {
+const Coffe: React.FC<IProps> = ({ coffe }) => {
+  const {
+    id,
+    img,
+    title,
+    description,
+    categorys,
+    quantify
+  } = coffe
+
   let [count, setCount] = useState<number>(0)
 
-  function lessCount(): void {
+  useEffect(() => {
+    setCount(quantify)
+  }, [quantify])
+
+  const { addItem, changeCoffeQuantify } = useContext(CartContext)
+
+  function handleLessCount(): void {
     const minus = count - 1
 
     if (minus < 0) {
       return
     }
 
+    changeCoffeQuantify(id, count -= 1)
     setCount(count = minus)
+  }
+
+  function handlePlusCount(id: number): void {
+    setCount(count += 1)
+    changeCoffeQuantify(id, count += 1)
+  }
+
+  function handleAddCart(coffe: ICoffe): void {
+    const { categorys, description, id, img, title } = coffe
+
+    if (count === 0) {
+      return
+    }
+
+    addItem({
+      categorys,
+      description,
+      id,
+      img,
+      quantify: count,
+      title
+    })
   }
 
   return (
@@ -42,7 +71,7 @@ const Coffe: React.FC<IProps> = ({
         ))}
       </S.CategorrysGrid>
       <S.Title>{title}</S.Title>
-      <S.SubTitle>{subtitle}</S.SubTitle>
+      <S.SubTitle>{description}</S.SubTitle>
       <S.Footer>
         <S.Price>
           R$<span>9,90</span>
@@ -50,16 +79,16 @@ const Coffe: React.FC<IProps> = ({
         <S.Actions>
           <S.Counter>
             <section>
-              <button type='button' onClick={() => lessCount()}>
+              <button type='button' onClick={() => handleLessCount()}>
                 <AiOutlineMinus />
               </button>
               <p>{count}</p>
-              <button type='button' onClick={() => setCount(count += 1)}>
+              <button type='button' onClick={() => handlePlusCount(id)}>
                 <FiPlus />
               </button>
             </section>
           </S.Counter>
-          <S.CartButton type='button'>
+          <S.CartButton type='button' onClick={() => handleAddCart(coffe)}>
             <IoCart />
           </S.CartButton>
         </S.Actions>

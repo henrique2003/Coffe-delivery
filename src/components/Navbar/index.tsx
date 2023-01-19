@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { IoCart } from 'react-icons/io5'
 import { MdLocationOn } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
@@ -5,9 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Logo.png'
 import { Wrapper } from '../../theme/components'
 import * as S from './styles'
+import { CartContext } from '../../context/cart'
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate()
+
+  const { cart } = useContext(CartContext)
 
   return (
     <Wrapper>
@@ -21,7 +25,7 @@ const Navbar: React.FC = () => {
             <MdLocationOn />
             <p>Porto alegre, <span>rs</span></p>
           </S.Location>
-          <S.Cart to="/checkout" num={0}>
+          <S.Cart to="/checkout" num={cart.length}>
             <IoCart />
           </S.Cart>
         </S.Actions>

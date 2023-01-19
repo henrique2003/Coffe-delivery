@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { IoCartOutline } from 'react-icons/io5'
 import { GiCardboardBoxClosed } from 'react-icons/gi'
 import { TfiTimer } from 'react-icons/tfi'
@@ -12,19 +12,28 @@ import { Itens, Category } from './components'
 import Coffe from '../../components/Cards/Coffe'
 import coffes_data from '../../mocks/coffes'
 import categorys from '../../mocks/categorys'
-
-interface ICoffe {
-  title: string
-  description: string
-  img: {
-    src: string
-    alt: string
-  }
-  categorys: string[]
-}
+import { ICoffe } from '../../context/cart/types'
+import { CartContext } from '../../context/cart/index'
 
 const Home: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<string[]>([])
+  const [coffesData, setCoffesData] = useState<ICoffe[]>([])
+
+  const { cart } = useContext(CartContext)
+
+  useEffect(() => {
+    const setedCart = coffes_data.map(coffeData => {
+      cart.map(coffeCart => {
+        if (coffeCart.id === coffeData.id) {
+          coffeData.quantify = coffeCart.quantify
+        }
+      })
+
+      return coffeData
+    })
+
+    setCoffesData(setedCart)
+  }, [cart])
 
   function changeCurrentCategoryItem(category: string): void {
     // See if category to be Add or Remove
@@ -51,7 +60,7 @@ const Home: React.FC = () => {
   function filterCoffes(): ICoffe[] {
     const filtredCoffes: ICoffe[] = []
 
-    coffes_data.map(coffe => {
+    coffesData.map(coffe => {
       let countCategorys = 0
 
       coffe.categorys.map(category => {
@@ -136,22 +145,16 @@ const Home: React.FC = () => {
             )}
             <S.CoffesGrid>
               {currentCategory.length === 0
-                ? coffes_data.map((coffe, index) => (
+                ? coffesData.map((coffe, index) => (
                   <Coffe
                     key={index}
-                    title={coffe.title}
-                    img={coffe.img}
-                    categorys={coffe.categorys}
-                    subtitle={coffe.description}
+                    coffe={coffe}
                   />
                 ))
                 : fitredCoffes.map((coffe, index) => (
                   <Coffe
                     key={index}
-                    title={coffe.title}
-                    img={coffe.img}
-                    categorys={coffe.categorys}
-                    subtitle={coffe.description}
+                    coffe={coffe}
                   />
                 ))}
             </S.CoffesGrid>

@@ -17,6 +17,8 @@ import {
 
 export default [
   {
+    id: 0,
+    quantify: 0,
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     img: {
@@ -28,6 +30,8 @@ export default [
     ]
   },
   {
+    id: 1,
+    quantify: 0,
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     img: {
@@ -39,6 +43,8 @@ export default [
     ]
   },
   {
+    id: 2,
+    quantify: 0,
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     img: {
@@ -50,6 +56,8 @@ export default [
     ]
   },
   {
+    id: 3,
+    quantify: 0,
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     img: {
@@ -62,6 +70,8 @@ export default [
     ]
   },
   {
+    id: 4,
+    quantify: 0,
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     img: {
@@ -74,6 +84,8 @@ export default [
     ]
   },
   {
+    id: 5,
+    quantify: 0,
     title: 'Latte',
     description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
     img: {
@@ -86,6 +98,8 @@ export default [
     ]
   },
   {
+    id: 6,
+    quantify: 0,
     title: 'Capuccino',
     description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
     img: {
@@ -98,6 +112,8 @@ export default [
     ]
   },
   {
+    id: 7,
+    quantify: 0,
     title: 'Macchiato',
     description: 'Café expresso misturado com um pouco de leite quente e espuma',
     img: {
@@ -110,6 +126,8 @@ export default [
     ]
   },
   {
+    id: 8,
+    quantify: 0,
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     img: {
@@ -122,6 +140,8 @@ export default [
     ]
   },
   {
+    id: 9,
+    quantify: 0,
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     img: {
@@ -134,6 +154,8 @@ export default [
     ]
   },
   {
+    id: 10,
+    quantify: 0,
     title: 'Cubano',
     description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
     img: {
@@ -147,6 +169,8 @@ export default [
     ]
   },
   {
+    id: 12,
+    quantify: 0,
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     img: {
@@ -158,6 +182,8 @@ export default [
     ]
   },
   {
+    id: 13,
+    quantify: 0,
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     img: {
@@ -169,6 +195,8 @@ export default [
     ]
   },
   {
+    id: 14,
+    quantify: 0,
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     img: {

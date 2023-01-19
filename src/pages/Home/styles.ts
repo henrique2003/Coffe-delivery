@@ -86,7 +86,7 @@ export const Grid = styled.div`
 `
 
 export const CoffeList = styled.div`
-  margin-top: 50px;
+  margin-top: 150px;
 
   header {
     display: flex;
@@ -108,6 +108,8 @@ export const CoffeList = styled.div`
   }
 
   @media(max-width: 800px) {
+    margin-top: 80px;
+    
     header {
       justify-content: center;
       flex-direction: column;
@@ -124,6 +126,8 @@ export const CoffeList = styled.div`
   }
 
   @media(max-width: 600px) {
+    margin-top: 50px;
+
     header {
       section {
         overflow-x: scroll;
