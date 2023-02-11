@@ -54,6 +54,7 @@ export const CartProvider: React.FC<{ children: JSX.Element }> = ({
 
   function removeAllItens(): void {
     setCart([])
+    localStorage.removeItem('cart')
     toast.success('Removidos com sucesso')
   }
 

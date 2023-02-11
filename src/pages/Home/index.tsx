@@ -23,11 +23,15 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const setedCart = coffes_data.map(coffeData => {
-      cart.map(coffeCart => {
-        if (coffeCart.id === coffeData.id) {
-          coffeData.quantify = coffeCart.quantify
-        }
-      })
+      if (cart.length > 0) {
+        cart.map(coffeCart => {
+          if (coffeCart.id === coffeData.id) {
+            coffeData.quantify = coffeCart.quantify
+          }
+        })
+      } else {
+        coffeData.quantify = 0
+      }
 
       return coffeData
     })

@@ -23,11 +23,11 @@ const Coffe: React.FC<IProps> = ({ coffe }) => {
 
   let [count, setCount] = useState<number>(0)
 
+  const { addItem, changeCoffeQuantify } = useContext(CartContext)
+
   useEffect(() => {
     setCount(quantify)
   }, [quantify])
-
-  const { addItem, changeCoffeQuantify } = useContext(CartContext)
 
   function handleLessCount(): void {
     const minus = count - 1
