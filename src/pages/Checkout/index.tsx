@@ -16,8 +16,24 @@ const Checkout: React.FC = () => {
 
   const { removeAllItens, cart } = useContext(CartContext)
 
+  function onSubmit(): void {
+    if (cart.length <= 0) return
+
+    removeAllItens()
+  }
+
   function handlePaymentMode(paymentMode: string): void {
     setPaymentMode(paymentMode)
+  }
+
+  function countTotalPrice(): number {
+    let totalPrice = 0
+
+    cart.map(item => {
+      totalPrice += item.quantify * 9.90
+    })
+
+    return totalPrice
   }
 
   return (
@@ -139,7 +155,7 @@ const Checkout: React.FC = () => {
             </S.CartList>
             <S.SubTotal>
               <h3>Total itens</h3>
-              <p>R$ 29,70</p>
+              <p>R$ {countTotalPrice().toFixed(2).replace('.', ',')}</p>
             </S.SubTotal>
             <S.SubTotal>
               <h3>Entrega</h3>
@@ -147,9 +163,9 @@ const Checkout: React.FC = () => {
             </S.SubTotal>
             <S.SubTotal>
               <h3>Total</h3>
-              <p>R$ 33,20</p>
+              <p>R$ {cart.length > 0 ? (countTotalPrice() + 3.50).toFixed(2).replace('.', ',') : '0,00'}</p>
             </S.SubTotal>
-            <S.Submit type='button' onClick={() => removeAllItens()}>Confirmar pedido</S.Submit>
+            <S.Submit type='button' onClick={() => onSubmit()}>Confirmar pedido</S.Submit>
           </section>
         </S.TotalCoffesSection>
       </S.Container>
