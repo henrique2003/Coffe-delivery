@@ -1,19 +1,23 @@
+// packages
 import { useState, useEffect, useContext } from 'react'
-import { IoCartOutline } from 'react-icons/io5'
-import { GiCardboardBoxClosed } from 'react-icons/gi'
-import { TfiTimer } from 'react-icons/tfi'
-import { CgCoffee } from 'react-icons/cg'
 
-import { Wrapper } from '../../theme/components'
+// styles
 import * as S from './styles'
-import { coffe_intro } from '../../assets'
-import theme from '../../theme'
-import { Itens, Category } from './components'
+
+// theme components
+import { Wrapper } from '../../theme/components'
+
+// components
+import { Introduction, Category } from './components'
 import Coffe from '../../components/Cards/Coffe'
+
+// mocks
 import coffes_data from '../../mocks/coffes'
 import categorys from '../../mocks/categorys'
+
+// context api
+import { CartContext } from '../../context/cart'
 import { ICoffe } from '../../context/cart/types'
-import { CartContext } from '../../context/cart/index'
 
 const Home: React.FC = () => {
   const [currentCategory, setCurrentCategory] = useState<string[]>([])
@@ -87,45 +91,7 @@ const Home: React.FC = () => {
 
   return (
     <S.Container>
-      <S.BackgroundGradient>
-        <Wrapper>
-          <S.Flex>
-            <S.Content>
-              <S.Title>Encontre o café perfeito para qualquer hora do dia</S.Title>
-              <S.Subtitle>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</S.Subtitle>
-              <S.Grid>
-                <Itens
-                  text='Compra simples e segura'
-                  bgColor={theme.COLORS.YELLOW_DARK}
-                >
-                  <IoCartOutline />
-                </Itens>
-                <Itens
-                  text='Embalagem mantém o café intacto'
-                  bgColor={theme.COLORS.BASE_TEXT}
-                >
-                  <GiCardboardBoxClosed />
-                </Itens>
-                <Itens
-                  text='Entrega rápida e rastreada'
-                  bgColor={theme.COLORS.YELLOW}
-                >
-                  <TfiTimer />
-                </Itens>
-                <Itens
-                  text='O café chega fresquinho até você'
-                  bgColor={theme.COLORS.PURPLE}
-                >
-                  <CgCoffee />
-                </Itens>
-              </S.Grid>
-            </S.Content>
-            <S.CoffeImage>
-              <img src={coffe_intro} alt="copo café descartavel branco com faixa preta com o logo e tampa preta, fundo amarelo com grãos de café na direita e na esquerda" />
-            </S.CoffeImage>
-          </S.Flex>
-        </Wrapper>
-      </S.BackgroundGradient>
+      <Introduction />
       <Wrapper>
         <S.CoffeList>
           <header>
