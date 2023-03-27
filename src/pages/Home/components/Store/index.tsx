@@ -95,8 +95,51 @@ const Store: React.FC = () => {
 
     return filtredCoffes
   }
-
   const fitredCoffes = filterCoffes()
+
+  // components render
+  function renderCategorys(): React.ReactNode {
+    return categorys.map((categoryItem, index) => (
+      <Category
+        key={index}
+        text={categoryItem}
+        currentCategory={currentCategory}
+        changeCurrentCategoryItem={filterCoffesByCategory}
+      />
+    ))
+  }
+
+  function renderNotFoundCoffeMessage(): React.ReactNode {
+    return currentCategory.length > 0 && fitredCoffes.length === 0 && (
+      <S.CoffeListMessage>
+        Nehum café encontrado com as cateogrias: {currentCategory.map(category => `"${category}" `)}
+      </S.CoffeListMessage>
+    )
+  }
+
+  function renderCoffes(): React.ReactNode {
+    return currentCategory.length === 0
+      ? renderDefaultCoffes()
+      : renderFiltredCoffes()
+  }
+
+  function renderDefaultCoffes(): React.ReactNode {
+    return coffesData.map((coffe, index) => (
+      <Coffe
+        key={index}
+        coffe={coffe}
+      />
+    ))
+  }
+
+  function renderFiltredCoffes(): React.ReactNode {
+    return fitredCoffes.map((coffe, index) => (
+      <Coffe
+        key={index}
+        coffe={coffe}
+      />
+    ))
+  }
 
   return (
     <Wrapper>
@@ -104,36 +147,13 @@ const Store: React.FC = () => {
         <header>
           <h3>Nossos cafés</h3>
           <section>
-            {categorys.map((categoryItem, index) => (
-              <Category
-                key={index}
-                text={categoryItem}
-                currentCategory={currentCategory}
-                changeCurrentCategoryItem={filterCoffesByCategory}
-              />
-            ))}
+            {renderCategorys()}
           </section>
         </header>
         <S.CoffeListContent>
-          {currentCategory.length > 0 && fitredCoffes.length === 0 && (
-            <S.CoffeListMessage>
-              Nehum café encontrado com as cateogrias: {currentCategory.map(category => `"${category}" `)}
-            </S.CoffeListMessage>
-          )}
+          {renderNotFoundCoffeMessage()}
           <S.CoffesGrid>
-            {currentCategory.length === 0
-              ? coffesData.map((coffe, index) => (
-                <Coffe
-                  key={index}
-                  coffe={coffe}
-                />
-              ))
-              : fitredCoffes.map((coffe, index) => (
-                <Coffe
-                  key={index}
-                  coffe={coffe}
-                />
-              ))}
+            {renderCoffes()}
           </S.CoffesGrid>
         </S.CoffeListContent>
       </S.CoffeList>
