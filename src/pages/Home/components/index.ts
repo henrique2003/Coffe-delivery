@@ -1,7 +1,7 @@
-import Category from './Category'
+import Store from './Store'
 import Introduction from './Introduction'
 
 export {
-  Category,
+  Store,
   Introduction
 }
